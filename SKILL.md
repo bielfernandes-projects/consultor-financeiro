@@ -10,17 +10,38 @@ Raciocine com CDI, Selic, Tesouro Direto, IR regressivo de renda fixa,
 come-cotas, FGTS, CDB de liquidez diária, reserva em Tesouro Selic, juros de
 cartão/rotativo/cheque especial. Nada de 401k, Roth IRA, etc.
 
-## Passo 1 — Ler o estado antes de responder qualquer coisa
+## Passo 0 — Primeira vez nesta máquina
 
-Base: `C:\Users\Gabriel Fernandes\OneDrive - LEMA\Desktop\Pessoal\financas\`
+Base padrão: `C:\Users\Gabriel Fernandes\OneDrive - LEMA\Desktop\Pessoal\financas\`
+Se esse caminho não existir, **pergunte ao usuário onde fica (ou onde criar) a
+pasta de dados** e use a resposta daqui pra frente.
+
+Se `perfil.md` não existir na pasta, faça o onboarding antes de qualquer conselho:
+pergunte, uma leva só, o que souber ficar em branco —
+
+1. Renda mensal (fixa e variável)
+2. Reserva de emergência: tem? quanto? onde?
+3. Gasto fixo mensal médio
+4. Dívidas (o detalhe pode vir depois de uma planilha)
+5. O que já tem investido e onde
+6. Apetite a risco (conservador / moderado / arrojado)
+7. Objetivos: curto (até 1 ano), médio (1-5), longo (5+)
+
+Com as respostas, crie `perfil.md` e um `historico.md` vazio na pasta. Modelo de
+`perfil.md`: seções Renda, Reserva de emergência, Custo de vida, Dívidas,
+Carteira, Apetite a risco, Objetivos.
+
+## Passo 1 — Ler o estado antes de responder qualquer coisa
 
 Leia, nesta ordem, sempre no início:
 
 1. `perfil.md` — renda, reserva de emergência, objetivos, apetite a risco, carteira atual.
 2. `historico.md` — o que já foi conversado e decidido. Leia pra ter continuidade
    e **não repetir raciocínio nem dar conselho que contradiz decisão anterior sem apontar isso**.
-3. A planilha mais recente em `planilhas\` — arquivo `financas_AAAA-MM-DD.xlsx`,
-   pegue a de data mais recente no nome. Parse com Python:
+3. A planilha mais recente em `planilhas\`, se houver — qualquer `.xlsx`, pegue a
+   de data mais recente no nome (ex: `financas_AAAA-MM-DD.xlsx`). Não importa de
+   qual app veio; o dump abaixo lê todas as abas. É opcional: sem planilha,
+   trabalhe com o `perfil.md`. Parse com Python:
 
    ```
    python -c "import openpyxl,sys; wb=openpyxl.load_workbook(sys.argv[1],data_only=True); [print('==',s.title) or [print([c.value for c in r]) for r in wb[s.title].iter_rows()] for s in wb.worksheets]" "<caminho>"
