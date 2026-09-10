@@ -1,0 +1,9 @@
+# Dados financeiros NUNCA entram no repo
+perfil.md
+historico.md
+roadmap-*.md
+planilhas/
+*.xlsx
+*.xls
+*.csv
+financas/
